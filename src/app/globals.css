@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf8f5;
+  --surface: #ffffff;
+  --subtle: #f1ede7;
+  --foreground: #1f1b16;
+  --muted: #6b635a;
+  --line: #e6e0d8;
+  --brand: #c2410c;
+  --brand-hover: #9a3412;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #15120f;
+    --surface: #1e1a16;
+    --subtle: #2a251f;
+    --foreground: #f3eee8;
+    --muted: #b3a99d;
+    --line: #3a332b;
+    --brand: #ea7a3b;
+    --brand-hover: #f08c52;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-subtle: var(--subtle);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-line bg-surface p-5 shadow-sm;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md bg-brand px-4 py-2 text-sm font-medium text-white hover:bg-[var(--brand-hover)] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-md border border-line bg-surface px-4 py-2 text-sm font-medium hover:bg-subtle;
+  }
+  .input {
+    @apply mt-1 block w-full rounded-md border border-line bg-surface px-2 py-1.5 text-sm text-foreground;
+  }
+}
